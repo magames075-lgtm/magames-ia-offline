@@ -1,7 +1,7 @@
 // MaGames IA Offline — chat de IA 100% no aparelho (wllama / llama.cpp em WebAssembly)
 import { Wllama } from './vendor/wllama/index.js';
 
-const VERSION = '1.0.1';
+const VERSION = '1.0.2';
 const HF = 'https://huggingface.co/';
 
 // Modelos (GGUF Q4_K_M do Hugging Face). Tamanhos conferidos no HF.
