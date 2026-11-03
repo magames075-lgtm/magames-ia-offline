@@ -1,7 +1,7 @@
 // MaGames IA Offline — chat de IA 100% no aparelho (wllama / llama.cpp em WebAssembly)
 import { Wllama } from './vendor/wllama/index.js';
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const HF = 'https://huggingface.co/';
 
 // Modelos (GGUF Q4_K_M do Hugging Face). Tamanhos conferidos no HF.
@@ -290,7 +290,8 @@ function showChat() {
 
 // Mantém o histórico dentro do contexto (estimativa ~3 caracteres por token)
 function buildMessages(c, m) {
-  const budget = (m.ctx - m.maxTokens - 120) * 3;
+  // Limite curto de histórico: no celular, reler um histórico longo deixa a 1ª palavra lenta
+  const budget = Math.min((m.ctx - m.maxTokens - 120) * 3, 4000);
   const out = []; let used = SYSTEM_PROMPT.length;
   for (let i = c.messages.length - 1; i >= 0; i--) {
     const x = c.messages[i]; const len = x.content.length;

@@ -1,6 +1,6 @@
 // Service worker: app offline (cache) + cabeçalhos COOP/COEP para liberar multi-thread (SharedArrayBuffer)
 // O modelo da IA fica no armazenamento OPFS (gerenciado pelo wllama), não neste cache.
-const VERSION = 'mio-v1.0.0';
+const VERSION = 'mio-v1.0.1';
 const SHELL = [
   './', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png',
