@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>MaGames IA Offline</title>
+<meta name="description" content="Chat de IA que roda 100% no seu celular. Depois de baixar o modelo, funciona sem internet e de graça.">
+<meta name="theme-color" content="#0B0F1A">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <button class="icon-btn" id="btnMenu" aria-label="Conversas">☰</button>
+    <div class="brand">
+      <img src="icons/icon-192.png" alt="" width="28" height="28">
+      <div>
+        <div class="brand-name">MaGames IA <span class="pill">Offline</span></div>
+        <div class="brand-sub" id="statusLine">Preparando…</div>
+      </div>
+    </div>
+    <button class="icon-btn" id="btnNew" aria-label="Nova conversa">＋</button>
+  </header>
+
+  <!-- Tela de escolha / download do modelo -->
+  <section id="setup" class="setup hidden">
+    <h1>IA no seu celular, sem internet</h1>
+    <p class="muted">Escolha um modelo. Ele é baixado <b>uma vez só</b> (use Wi-Fi) e depois a IA funciona offline, de graça, sem enviar nada para servidor nenhum.</p>
+    <div id="deviceInfo" class="device"></div>
+    <div id="modelList" class="models"></div>
+    <div id="dlBox" class="dl hidden">
+      <div class="dl-title" id="dlTitle">Baixando…</div>
+      <div class="bar"><div id="dlBar"></div></div>
+      <div class="dl-meta"><span id="dlPct">0%</span><span id="dlInfo"></span></div>
+      <button class="btn ghost" id="btnCancelDl">Cancelar</button>
+    </div>
+    <p class="tiny muted">Dica: no Chrome, toque em ⋮ → <b>Adicionar à tela inicial</b> (ou “Instalar app”) para abrir como aplicativo.</p>
+  </section>
+
+  <!-- Chat -->
+  <main id="chat" class="chat hidden">
+    <div id="messages" class="messages" aria-live="polite"></div>
+  </main>
+
+  <footer id="composer" class="composer hidden">
+    <div class="speed" id="speed"></div>
+    <form id="form">
+      <textarea id="input" rows="1" placeholder="Pergunte qualquer coisa…" enterkeyhint="send"></textarea>
+      <button type="submit" class="send" id="btnSend" aria-label="Enviar">➤</button>
+    </form>
+  </footer>
+
+  <!-- Gaveta -->
+  <aside id="drawer" class="drawer">
+    <div class="drawer-head">
+      <b>Conversas</b>
+      <button class="icon-btn" id="btnCloseDrawer" aria-label="Fechar">✕</button>
+    </div>
+    <button class="btn" id="btnNew2">＋ Nova conversa</button>
+    <div id="convList" class="conv-list"></div>
+    <div class="drawer-foot">
+      <div class="sec-title">Modelo e aparelho</div>
+      <div id="drawerModel" class="tiny muted"></div>
+      <label class="row"><input type="checkbox" id="optGpu"> Usar GPU (WebGPU, experimental)</label>
+      <button class="btn ghost" id="btnModels">Trocar / gerenciar modelos</button>
+      <button class="btn ghost danger" id="btnClearAll">Apagar todas as conversas</button>
+      <div class="tiny muted" id="storageInfo"></div>
+      <div class="tiny muted">v<span id="ver"></span> · grátis · roda no aparelho · <a href="https://github.com/magames075-lgtm/magames-ia-offline" target="_blank" rel="noopener">código</a></div>
+    </div>
+  </aside>
+  <div id="scrim" class="scrim"></div>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
